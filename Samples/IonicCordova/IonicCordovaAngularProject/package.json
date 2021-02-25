@@ -28,7 +28,6 @@
     "clevertap-cordova": "^2.0.11",
     "cordova-android": "^7.1.1",
     "cordova-browser": "5.0.3",
-    "cordova-ios": "4.5.5",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^2.0.1",
@@ -44,6 +43,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.11",
+    "cordova-ios": "^6.2.0",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project",
@@ -63,8 +63,8 @@
     },
     "platforms": [
       "browser",
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
