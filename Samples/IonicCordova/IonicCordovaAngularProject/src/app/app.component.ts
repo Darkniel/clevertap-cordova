@@ -75,6 +75,68 @@ export class MyApp {
       clevertap.sessionGetUTMDetails().then((val) => {console.log(JSON.stringify(val))});
       // End CleverTap
       */
+
+
+      //==================================================================================================================
+      // cordova-plugin-firebasex IMPLEMENTATION
+      //==================================================================================================================
+      (window as any).window.FirebasePlugin.hasPermission( hasPermission => {
+        //this.zone.run(() => {
+          if (hasPermission) {
+            (window as any).FirebasePlugin.getToken(token => console.log("FB getToken", token));
+            (window as any).FirebasePlugin.onTokenRefresh(newToken =>  console.log("FB onTokenRefresh", newToken));
+            (window as any).FirebasePlugin.onMessageReceived(message => console.log("FB onMessageReceived", message));
+            
+            
+            // CT Team Suggestion but should not be necessary if clevertap-cordova works correctly alongside cordova-plugin-firebasex
+            // if(platform.is("ios")){
+            //   (<any>window).FirebasePlugin.onApnsTokenReceived(
+            //     APNToken => {
+            //       console.log('FB onApnsTokenReceived ', APNToken)
+            //       if(APNToken){
+            //         clevertap.setPushToken(APNToken).then(res => console.log(res));
+            //       }
+            //     },
+            //     error => {
+            //       console.log('FB error onApnsTokenReceived ', error)
+            //     });
+            // }
+
+          } else {
+
+            (window as any).FirebasePlugin.grantPermission(hasPermission => {
+                if (hasPermission) {
+                    (window as any).FirebasePlugin.getToken(token => console.log("FB getToken", token));
+                    (window as any).FirebasePlugin.onTokenRefresh(newToken =>  console.log("FB onTokenRefresh", newToken));
+                    (window as any).FirebasePlugin.onMessageReceived(message => console.log("FB onMessageReceived", message));
+
+                    // CT Team Suggestion but should not be necessary if clevertap-cordova works correctly alongside cordova-plugin-firebasex
+                    // if(platform.is("ios")){
+                    //   (<any>window).FirebasePlugin.onApnsTokenReceived(
+                    //     APNToken => {
+                    //       console.log('FB onApnsTokenReceived ', APNToken)
+                    //       if(APNToken){
+                    //         clevertap.setPushToken(APNToken).then(res => console.log(res));
+                    //       }
+                    //     },
+                    //     error => {
+                    //       console.log('FB error onApnsTokenReceived ', error)
+                    //     });
+                    // }
+
+                  } else {
+                    console.log("FB Permision not garanted");
+                }
+            });
+          }
+        //})
+      });
+
+
+
+
+
+
     });
   }
 }
