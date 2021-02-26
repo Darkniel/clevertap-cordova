@@ -46,9 +46,10 @@ export class MyApp {
       clevertap.setDebugLevel(2);
       clevertap.enablePersonalization();
       clevertap.registerPush();
-      /*
-      clevertap.createNotificationChannel("TEST_CHANNEL", "Test Channel", "A TEST channel", 0, true);
+      clevertap.createNotificationChannel("TEST_CHANNEL", "Test Channel", "A TEST channel", 5, true);
       clevertap.profileGetCleverTapID().then((id) => {console.log("CleverTapID: " + id)});
+
+      /*
       clevertap.recordEventWithName("foo");
       clevertap.recordEventWithNameAndProps("boo", {"bar":"zoo"});
       clevertap.recordScreenView("Home");
